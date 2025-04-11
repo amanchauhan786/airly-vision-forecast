@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -23,13 +22,33 @@ import {
 import { 
   Activity, 
   Heart, 
-  Lungs, 
+  LucideIcon,
   Brain, 
   User,
   Clock, 
   AlertTriangle 
 } from 'lucide-react';
 import { POLLUTANTS, getAQICategory, generateStations } from '@/utils/air-quality-utils';
+
+// Create a custom Lungs icon component since it's not available in lucide-react
+const Lungs = (props: React.ComponentProps<LucideIcon>) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...props}
+    >
+      <path d="M6.081 20c0-2.164-.673-4.142-1.811-5.804A6.81 6.81 0 0 1 3 9.353c0-3.675 2.883-6.68 6.436-6.68.732 0 1.443.117 2.103.335C11.615 2.819 11.476 2 11.476 2s.514 1.79.51 2.772c.095-.106.194-.208.296-.316C13.135 3.662 14.044 3 15.02 3c1.124 0 2.094.672 2.52 1.64 1.482.125 2.93.53 4.306 1.164M18.56 15A13.02 13.02 0 0 0 22 15V8.458c-1.4-.89-2.976-1.419-4.667-1.419-1.64 0-2.393 1.38-2.393 1.38h-.004v.003c0-.076-.036-1.766-.9-3.556-.3-.618-.93-1.035-1.659-1.035-.872 0-1.63.736-1.63 1.631 0 3.862-3.956 6.615-3.956 10.515V20H9.45c0-3.944 2.323-6.85 2.323-10.146 0-.1.16-.207.047-.313"/>
+    </svg>
+  );
+};
 
 const Health = () => {
   const [age, setAge] = useState(35);

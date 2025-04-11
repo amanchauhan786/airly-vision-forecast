@@ -101,10 +101,11 @@ export const generateHourlyData = (baseMean: number, variance: number, hoursBack
     // Add daily pattern: higher in morning and evening, lower in afternoon
     const hourFactor = Math.sin((time.getHours() + 6) * (Math.PI / 12)) * 0.5 + 0.5;
     const value = baseMean + (variance * hourFactor) + getRandomValue(-variance/4, variance/4);
+    const formattedValue = Math.max(0, Number(value.toFixed(1)));
     
     data.push({
       time: time.toISOString(),
-      value: Math.max(0, value.toFixed(1))
+      value: formattedValue
     });
   }
   
@@ -121,10 +122,11 @@ export const generateDailyData = (baseMean: number, variance: number, daysBack =
     // Add weekly pattern
     const dayFactor = Math.sin((time.getDay() + 3) * (Math.PI / 3.5)) * 0.3 + 0.7;
     const value = baseMean + (variance * dayFactor) + getRandomValue(-variance/3, variance/3);
+    const formattedValue = Math.max(0, Number(value.toFixed(1)));
     
     data.push({
       time: time.toISOString(),
-      value: Math.max(0, value.toFixed(1))
+      value: formattedValue
     });
   }
   
@@ -142,11 +144,12 @@ export const generateForecastData = (currentValue: number, variance: number, day
     const dayTrend = (i / 24) * (variance / 4); // Slight upward trend
     const hourFactor = Math.sin((time.getHours() + 6) * (Math.PI / 12)) * 0.6 + 0.4;
     
-    const value = parseFloat(currentValue) + dayTrend + (variance * hourFactor) + getRandomValue(-variance/3, variance/3);
+    const value = currentValue + dayTrend + (variance * hourFactor) + getRandomValue(-variance/3, variance/3);
+    const formattedValue = Math.max(0, Number(value.toFixed(1)));
     
     data.push({
       time: time.toISOString(),
-      value: Math.max(0, value.toFixed(1))
+      value: formattedValue
     });
   }
   

@@ -7,7 +7,7 @@ import WeatherCard from '@/components/dashboard/WeatherCard';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ArrowUpRight, ArrowDownRight, MapPin, Bell, Clock } from 'lucide-react';
-import { toast } from '@/components/ui/sonner';
+import { toast } from "@/hooks/use-toast";
 import { 
   generateHourlyData, 
   generateStations,

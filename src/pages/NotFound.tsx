@@ -2,7 +2,7 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { MapOff } from "lucide-react";
+import { Map } from "lucide-react";
 
 const NotFound = () => {
   const location = useLocation();
@@ -18,7 +18,7 @@ const NotFound = () => {
     <div className="min-h-screen flex items-center justify-center bg-secondary/20">
       <div className="text-center max-w-md px-6">
         <div className="bg-primary/10 h-24 w-24 rounded-full flex items-center justify-center mx-auto mb-6">
-          <MapOff className="h-12 w-12 text-primary/80" />
+          <Map className="h-12 w-12 text-primary/80" />
         </div>
         <h1 className="text-4xl font-bold mb-4">404</h1>
         <p className="text-xl text-muted-foreground mb-6">
