@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import AQISummaryCard from '@/components/dashboard/AQISummaryCard';
@@ -20,7 +19,6 @@ const Dashboard = () => {
   const [lastUpdated, setLastUpdated] = useState(new Date().toISOString());
   const [pollutantData, setPollutantData] = useState<Record<string, any>>({});
 
-  // Generate pollutant trend data
   useEffect(() => {
     const pollutants = Object.keys(POLLUTANTS);
     const data: Record<string, any> = {};
@@ -34,14 +32,12 @@ const Dashboard = () => {
     setPollutantData(data);
   }, [selectedStation, stations]);
 
-  // Simulate real-time updates
   useEffect(() => {
     const interval = setInterval(() => {
       const updatedStations = generateStations();
       setStations(updatedStations);
       setLastUpdated(new Date().toISOString());
       
-      // Occasionally show a notification
       if (Math.random() > 0.7) {
         const randomStation = Math.floor(Math.random() * updatedStations.length);
         const pollutantKeys = Object.keys(POLLUTANTS);
@@ -49,20 +45,20 @@ const Dashboard = () => {
         const pollutantName = POLLUTANTS[randomPollutant as keyof typeof POLLUTANTS].name;
         
         if (updatedStations[randomStation].readings[randomPollutant as keyof typeof POLLUTANTS] > 100) {
-          toast(`High ${pollutantName} levels detected at ${updatedStations[randomStation].name}`, {
+          toast({
+            title: `High ${pollutantName} levels detected at ${updatedStations[randomStation].name}`,
             description: "Consider reducing outdoor activities in this area.",
             icon: <Bell className="h-4 w-4" />,
           });
         }
       }
-    }, 30000); // Update every 30 seconds
+    }, 30000);
     
     return () => clearInterval(interval);
   }, []);
 
   const currentStation = stations[selectedStation];
   
-  // Calculate percentage changes (simulated)
   const calculateChange = (base: number) => {
     const changePercent = Math.random() > 0.5 ? Math.random() * 15 : -Math.random() * 15;
     return {
