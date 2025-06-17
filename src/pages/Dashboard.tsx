@@ -48,7 +48,6 @@ const Dashboard = () => {
           toast({
             title: `High ${pollutantName} levels detected at ${updatedStations[randomStation].name}`,
             description: "Consider reducing outdoor activities in this area.",
-            icon: <Bell className="h-4 w-4" />,
           });
         }
       }

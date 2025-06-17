@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -94,7 +93,6 @@ const Alerts = () => {
     toast({
       title: 'Alert preferences saved successfully',
       description: 'You will now receive notifications based on your preferences.',
-      icon: <CheckCircle2 className="h-4 w-4" />,
     });
   };
 
@@ -102,7 +100,6 @@ const Alerts = () => {
     toast({
       title: '⚠️ Air Quality Alert Test',
       description: `This is a test notification for ${selectedPollutants.join(', ')} levels exceeding threshold.`,
-      icon: <AlertTriangle className="h-4 w-4" />,
       duration: 5000,
     });
   };
