@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { cn } from '@/lib/utils';
@@ -14,6 +13,7 @@ import {
   X,
   BookOpen
 } from 'lucide-react';
+import DeveloperFooter from './DeveloperFooter';
 
 interface NavItemProps {
   icon: React.ReactNode;
@@ -139,6 +139,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
       <div className="md:pl-64 flex flex-col flex-1">
         <main className="flex-1 p-4 md:p-6">
           {children}
+          <DeveloperFooter />
         </main>
       </div>
     </div>
