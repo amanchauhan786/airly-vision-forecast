@@ -1,59 +1,101 @@
-## README Description for GitHub Repository: **Airly Vision Forecast**
+Of course. Based on the provided project documentation and repository information, here is a comprehensive and well-structured README file for your **Airly Vision Forecast** project.
 
-### Overview
+# Vāyu Shuddhi: An AI-Powered Air Quality Analysis and Forecast Platform
 
-**Airly Vision Forecast** is a comprehensive web-based platform designed to analyze and forecast air quality using advanced data-driven techniques. Built on robust machine learning models and interactive visualization tools, this project empowers users with actionable insights into air pollution dynamics. The web application leverages pollutant and meteorological datasets to provide real-time monitoring, predictive analytics, and visualization of air quality trends across urban environments.
+**Live Demo:** **[airly-vision-forecast.vercel.app](https://airly-vision-forecast.vercel.app/)**
 
-### Features
+**GitHub Repository:** **[amanchauhan786/airly-vision-forecast](https://github.com/amanchauhan786/airly-vision-forecast)**
 
-- **Real-Time Monitoring**: Track pollutant levels (PM10, PM2.5, NOx, CO, Ozone) from multiple monitoring stations.
-- **Predictive Analytics**: Short-term forecasting of air quality using machine learning models like Random Forests and BiGRU-GCN hybrid architectures.
-- **Interactive Dashboards**: Explore time-series visualizations, pollution hotspot maps, and meteorological overlays for enhanced decision-making.
-- **Health Risk Calculator**: Assess exposure impacts based on pollutant concentrations and WHO guidelines.
-- **Advanced Visualization Tools**: Correlation heatmaps, animated trends, and seasonal variations for deeper data insights.
-- **Alerts and Notifications**: Receive timely updates on critical pollution levels to foster awareness and mitigation strategies.
+Vāyu Shuddhi (also known as Airly Vision Forecast) is a comprehensive, data-driven web platform designed for the advanced analysis, visualization, and forecasting of urban air quality[1]. This project addresses the critical challenge of air pollution by leveraging high-resolution datasets and sophisticated machine learning models to provide actionable insights for researchers, policymakers, and the public[1][2].
 
-### Methodology
+Developed using data from 40 monitoring stations across Delhi, the platform offers a deep dive into the complex dynamics of air pollutants and their relationship with meteorological factors[1].
 
-1. **Data Collection**: Pollutant datasets sourced from CPCB monitoring stations integrated with meteorological parameters such as temperature, humidity, wind speed, and solar radiation.
-2. **Preprocessing**: Missing values handled using KNN imputation; feature engineering includes time-based variables like hour, day, season.
-3. **Model Development**: Machine learning models trained on historical data for accurate AQI predictions; PCA used for feature selection.
-4. **Visualization**: Interactive tools developed for real-time data interpretation and mapping.
+### The Problem
 
-### Future Directions
+Urban centers like Delhi face severe air quality challenges due to rapid industrialization and high vehicular emissions. High concentrations of particulate matter (PM10, PM2.5) and gaseous pollutants (NOx, Ozone, CO) pose significant risks to public health and the environment[1]. Understanding and predicting these pollution patterns is essential for developing effective mitigation strategies.
 
-- Integration of high-resolution boundary layer dynamics for improved model precision.
-- Expansion to ultrafine particle measurements and advanced health impact assessments.
+### Our Solution
 
-### Deployment
+This platform provides a robust framework to tackle this issue through:
+*   **Centralized Data Analysis:** Integrating pollutant and meteorological data for a holistic view.
+*   **Predictive Power:** Using advanced ML models to forecast short-term air quality with high accuracy[1].
+*   **Actionable Insights:** Translating complex data into intuitive visualizations, including pollution hotspots, temporal trends, and health risk assessments[1][2].
 
-The application is hosted on **Vercel**, ensuring seamless performance and accessibility. Visit the live website at [airly-vision-forecast.vercel.app](https://airly-vision-forecast.vercel.app) to explore its features.
+## Key Features
 
-### Repository Structure
+*   **Real-Time Monitoring:** Track live pollutant levels (PM10, PM2.5, NOx, O3, CO) from dozens of monitoring stations across Delhi[1].
+*   **Predictive Analytics:** Get 24-hour AQI forecasts powered by hybrid machine learning models that have demonstrated up to 89% accuracy[1].
+*   **Interactive Dashboards:** Explore dynamic maps showing pollution hotspots, animated temporal trends, and overlays of meteorological data like wind direction and temperature[1][2].
+*   **Health Risk Assessment:** An integrated calculator estimates health impacts based on pollutant concentrations. For example, it can model the estimated 12-15% increase in asthma cases for every 10 µg/m³ rise in PM2.5[1].
+*   **Advanced Visualization Tools:** Utilize correlation heatmaps to understand relationships between pollutants and weather (e.g., PM2.5 and humidity) and diagnostic tools to identify key pollution drivers[1].
+*   **Alerts and Education:** The system is designed to provide alerts for poor air quality and includes educational modules to foster public awareness[1].
 
-```
-├── src/
-│   ├── components/        # UI components
-│   ├── models/            # Machine learning models
-│   ├── data/              # Dataset preprocessing scripts
-│   └── utils/             # Helper functions
-├── public/
-│   ├── assets/            # Images and icons
-├── README.md              # Project documentation
-└── package.json           # Dependencies
-```
+## Methodology and System Architecture
 
-### How to Run Locally
+The project is built on a systematic, data-driven methodology, structured into a scalable three-tier architecture for real-time analysis[1].
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/Aditya-devop/Airly-Vision-Forecast.git
-   ```
-2. Install dependencies:
-   ```
-   npm install
-   ```
-3. Start the development server:
-   ```
-   npm run dev
-   ```
+[image:1]
+
+1.  **Data Preprocessing:**
+    *   **Collection:** Hourly pollutant and meteorological data were sourced from Central Pollution Control Board (CPCB) APIs[1].
+    *   **Handling Missing Values:** K-nearest neighbors (KNN) imputation was used to ensure data integrity and preserve temporal consistency[1].
+    *   **Outlier Detection:** Outliers were identified using Z-score and IQR methods, with extreme values log-transformed to reduce skewness[1].
+
+2.  **Model Selection and Training:**
+    *   **Random Forests:** Used for its strength in feature importance analysis, identifying that factors like NO2 and solar radiation drove 63% of PM2.5 variance[1].
+    *   **Hybrid BiGRU-GCN Model:** This advanced model combines bidirectional GRUs (to capture time-based patterns) with graph convolutions (to understand spatial dependencies between monitoring stations). This model significantly reduced prediction errors[1].
+
+3.  **Model Performance:**
+    The models demonstrated high reliability across different time scales[1].
+
+| Metric | Hourly AQI | Monthly AQI |
+| :--- | :--- | :--- |
+| **MAE (µg/m³)** | 31.38[1] | 14.82[1] |
+| **RMSE (µg/m³)**| 50.23[1] | 16.46[1] |
+| **R²** | 0.824[1] | 0.966[1] |
+
+## Tech Stack
+
+| Area | Technology / Service |
+| :--- | :--- |
+| **Frontend** | React.js, Mapbox GL (for maps), Plotly (for charts) |
+| **Backend & APIs** | Supabase Edge Functions |
+| **Database** | Supabase PostgreSQL |
+| **ML Models** | Random Forest, BiGRU-GCN (developed in Python) |
+| **Deployment** | Vercel[2] |
+| **Data Source** | CPCB APIs[1] |
+
+## Getting Started (Local Development)
+
+To run this project locally, follow these steps:
+
+1.  **Clone the repository:**
+    ```sh
+    git clone https://github.com/amanchauhan786/airly-vision-forecast.git
+    ```
+2.  **Navigate to the project directory:**
+    ```sh
+    cd airly-vision-forecast
+    ```
+3.  **Install the dependencies:**
+    ```sh
+    npm install
+    ```
+4.  **Set up environment variables:** You will need to create a `.env` file and add necessary API keys for services like Supabase and Mapbox.
+5.  **Run the development server:**
+    ```sh
+    npm run dev
+    ```
+6.  Open your browser and navigate to the local address provided (usually `http://localhost:5173`).
+
+## Future Work
+
+*   **Improve Model Precision:** Integrate high-resolution boundary layer dynamics and ultrafine particle measurements to enhance forecast accuracy[1][2].
+*   **Expand Geographic Scope:** Extend the system to include other Indian cities for comparative regional analysis[1].
+*   **Enhance Real-Time Data:** Incorporate a network of IoT-based sensors across Delhi for higher-resolution data[1].
+*   **Develop Policy Tools:** Build scenario modeling tools to test the potential impact of interventions like traffic rerouting or stricter emission standards[1].
+
+## Authors
+
+*   Aditya Shriwal
+*   Aman Chauhan
