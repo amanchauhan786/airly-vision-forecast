@@ -1,4 +1,4 @@
-Of course. Based on the provided project documentation and repository information, here is a comprehensive and well-structured README file for your **Airly Vision Forecast** project.
+<img width="1917" height="865" alt="image" src="https://github.com/user-attachments/assets/320ba331-3d57-4917-bf5a-70e01bdc4578" />
 
 # Vāyu Shuddhi: An AI-Powered Air Quality Analysis and Forecast Platform
 
